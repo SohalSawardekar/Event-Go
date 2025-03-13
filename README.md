@@ -124,8 +124,7 @@
 
 ## 👨‍💻 Contributors
 
-- [Your Name]
-- [Team Member Name (if any)]
+- Sohal Sawardekar
 - Open for contributions! 🚀
 
 ---
