@@ -1,3 +1,7 @@
+import 'package:event_go/screens/home.dart';
+import 'package:event_go/screens/landing.dart';
+import 'package:event_go/screens/login.dart';
+import 'package:event_go/screens/register.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,14 +16,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Event Go",
-      home: Scaffold(
-        appBar: AppBar(title: const Text("Event Go")),
-        body: const Center(
-          child: Image(
-            image: AssetImage("assets/logo/EventGo.png"),
-          ),
-        ),
-      ),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const LandingPage(),
+        "/login": (context) => const LoginPage(),
+        "/register": (context) => const RegisterPage(),
+        "/home": (context) => const HomePage(),
+      },
     );
   }
 }
