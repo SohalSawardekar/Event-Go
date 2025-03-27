@@ -1,5 +1,7 @@
+import 'package:event_go/screens/favorites.dart';
 import 'package:event_go/screens/home.dart';
 import 'package:event_go/screens/landing.dart';
+import 'package:event_go/screens/location.dart';
 import 'package:event_go/screens/login.dart';
 import 'package:event_go/screens/register.dart';
 import 'package:flutter/material.dart';
@@ -19,9 +21,11 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: {
         "/": (context) => const LandingPage(),
-        "/login": (context) => const LoginPage(),
+        "/login": (context) => LoginPage(),
         "/register": (context) => const RegisterPage(),
-        "/home": (context) => const HomePage(),
+        "/home;": (context) => const HomePage(),
+        "/location": (context) => const Location(),
+        "/favorites": (context) => const Favorites(),
       },
     );
   }
