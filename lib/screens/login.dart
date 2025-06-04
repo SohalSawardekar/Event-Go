@@ -13,8 +13,8 @@ class LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final _emailController = TextEditingController();
-    final _passwordController = TextEditingController();
+    final emailController = TextEditingController();
+    final passwordController = TextEditingController();
     bool isVisible = false;
 
     return Scaffold(
@@ -65,7 +65,7 @@ class LoginPageState extends State<LoginPage> {
                 child: Column(
                   children: [
                     TextField(
-                      controller: _emailController,
+                      controller: emailController,
                       autocorrect: true,
                       decoration: InputDecoration(
                           label: Text(
@@ -79,7 +79,7 @@ class LoginPageState extends State<LoginPage> {
                     ),
                     TextField(
                       obscureText: !isVisible,
-                      controller: _passwordController,
+                      controller: passwordController,
                       autocorrect: true,
                       decoration: InputDecoration(
                           label: Text(
@@ -92,7 +92,7 @@ class LoginPageState extends State<LoginPage> {
                       height: 10,
                     ),
                     TextButton(
-                        iconAlignment: IconAlignment.end,
+                        // iconAlignment: IconAlignment.end,
                         onPressed: () => {},
                         child: const Text(
                           "Forgot Password?",
@@ -124,19 +124,46 @@ class LoginPageState extends State<LoginPage> {
                       height: 10,
                     ),
                     ElevatedButton(
-                      style: ButtonStyle(
-                          padding: WidgetStateProperty.all(
-                              const EdgeInsets.symmetric(
-                                  vertical: 15, horizontal: 230))),
-                      onPressed: () => {},
-                      child: Row(
-                        children: [
-                          Text(
-                            "Sign in With Google",
-                            style: GoogleFonts.poppins(),
-                          )
-                        ],
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 20),
+                        backgroundColor: Colors.white,
                       ),
+                      onPressed: () {},
+                      child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Sign in With Google",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.black, fontSize: 16),
+                            ),
+                          ]),
+                    ),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 15, horizontal: 20),
+                        backgroundColor: Colors.white,
+                      ),
+                      onPressed: () {},
+                      child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "Sign in With Apple",
+                              style: GoogleFonts.poppins(
+                                  color: Colors.black, fontSize: 16),
+                            ),
+                          ]),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text("Don't have an account? "),
+                    TextButton(
+                      onPressed: () => {},
+                      child: const Text("Sign Up"),
                     )
                   ],
                 )),

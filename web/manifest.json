@@ -1,6 +1,6 @@
 {
-    "name": "event_go",
-    "short_name": "event_go",
+    "name": "eventgo",
+    "short_name": "eventgo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

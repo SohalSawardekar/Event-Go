@@ -1,12 +1,24 @@
-import 'package:event_go/screens/favorites.dart';
-import 'package:event_go/screens/home.dart';
-import 'package:event_go/screens/landing.dart';
-import 'package:event_go/screens/location.dart';
-import 'package:event_go/screens/login.dart';
-import 'package:event_go/screens/register.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:firebase_core/firebase_core.dart';
 
-void main() {
+import 'routes/app_router.dart';
+import 'services/auth_service.dart';
+import 'services/event_service.dart';
+import 'services/location_service.dart';
+import 'utils/theme.dart';
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  
+  // Load environment variables
+  await dotenv.load(fileName: ".env");
+  
+  // Initialize Firebase
+  await Firebase.initializeApp();
+  
   runApp(const MyApp());
 }
 
@@ -15,18 +27,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: "Event Go",
-      initialRoute: "/",
-      routes: {
-        "/": (context) => const LandingPage(),
-        "/login": (context) => LoginPage(),
-        "/register": (context) => const RegisterPage(),
-        "/home;": (context) => const HomePage(),
-        "/location": (context) => const Location(),
-        "/favorites": (context) => const Favorites(),
-      },
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => AuthService()),
+        ChangeNotifierProvider(create: (_) => EventService()),
+        ChangeNotifierProvider(create: (_) => LocationService()),
+      ],
+      child: MaterialApp(
+        title: 'EventGo',
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: ThemeMode.system,
+        onGenerateRoute: AppRouter.onGenerateRoute,
+        initialRoute: AppRouter.splash,
+      ),
     );
   }
 }
